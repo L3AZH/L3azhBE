@@ -15,6 +15,7 @@ const basicAuth = (req, res, next) => {
     ) {
       next();
     } else {
+      console.log(decode);
       return res
         .status(401)
         .json(
