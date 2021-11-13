@@ -1,4 +1,4 @@
-const { body, param, validationResult } = require("express-validator");
+const { body, param, validationResult, query } = require("express-validator");
 const { ErrorResponse } = require("../models/ErrorResponse");
 const GiangVien = require("../databases/models/GiangVien");
 
@@ -67,6 +67,20 @@ module.exports = {
     // body("anhdaidien")
     //   .isArray()
     //   .withMessage("Du lieu anh dai dien khong hop le"),
+  ],
+  getInfoGiangVienValidation: [
+    query("magv")
+      .trim()
+      .notEmpty()
+      .withMessage("Vui long nhap ma giang vien")
+      .custom(async (value) => {
+        const findResult = await GiangVien.findByPk(value);
+        if (findResult == null) {
+          return Promise.reject(
+            new ErrorResponse(404, { message: "Khong tim thay ma giang vien" })
+          );
+        }
+      }),
   ],
   result: (req, res, next) => {
     const errors = validationResult(req);

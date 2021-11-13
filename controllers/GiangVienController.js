@@ -3,6 +3,7 @@ const { ErrorResponse } = require("../models/ErrorResponse");
 const { SuccessResponse } = require("../models/SuccessResponse");
 const bcrypt = require("bcrypt");
 const moment = require("moment");
+const _ = require("lodash");
 const GiangVien = require("../databases/models/GiangVien");
 
 async function hashPassword(password) {
@@ -34,4 +35,14 @@ exports.registerGiangVienAccount = asyncMiddleware(async (req, res, next) => {
       },
     })
   );
+});
+
+exports.getInfoGiangVien = asyncMiddleware(async (req, res, next) => {
+  const magv = req.query.magv;
+  const resultFind = await GiangVien.findByPk(magv);
+  return res
+    .status(200)
+    .json(
+      new SuccessResponse(200, _.omit((await resultFind).toJSON(), ["MATKHAU"]))
+    );
 });

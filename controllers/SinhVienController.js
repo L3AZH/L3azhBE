@@ -4,6 +4,7 @@ const { ErrorResponse } = require("../models/ErrorResponse");
 const { SuccessResponse } = require("../models/SuccessResponse");
 const bcrypt = require("bcrypt");
 const moment = require("moment");
+const _ = require("lodash");
 
 async function hashPassword(password) {
   const salt = await bcrypt.genSalt(parseInt(process.env.DB_NUMBERSALT));
@@ -34,4 +35,14 @@ exports.registerSinhVienAccount = asyncMiddleware(async (req, res, next) => {
       },
     })
   );
+});
+
+exports.getInfoSinhVien = asyncMiddleware(async (req, res, next) => {
+  const masv = req.query.masv;
+  const resultFind = await SinhVien.findByPk(masv);
+  return res
+    .status(200)
+    .json(
+      new SuccessResponse(200, _.omit((await resultFind).toJSON(), ["MATKHAU"]))
+    );
 });
