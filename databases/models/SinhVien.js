@@ -1,6 +1,7 @@
 const sequelize = require("../DbConnection");
 const { DataTypes, Model } = require("sequelize");
 const jwt = require("jsonwebtoken");
+const Lop = require("./Lop");
 
 class SinhVien extends Model {
   generateToken() {
@@ -37,6 +38,13 @@ SinhVien.init(
     ANHDAIDIEN: {
       type: DataTypes.BLOB,
     },
+    LOP_MALOP: {
+      type: DataTypes.STRING(20),
+      references: {
+        model: Lop,
+        key: "MALOP",
+      },
+    },
   },
   {
     sequelize,
@@ -45,5 +53,8 @@ SinhVien.init(
     modelName: "SINHVIEN",
   }
 );
+
+Lop.hasMany(SinhVien);
+SinhVien.belongsTo(Lop);
 
 module.exports = SinhVien;
