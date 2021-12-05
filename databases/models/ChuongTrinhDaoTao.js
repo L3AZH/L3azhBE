@@ -7,15 +7,17 @@ class ChuongTrinhDaoTao extends Model {}
 
 ChuongTrinhDaoTao.init(
   {
-    KHOILOP_MAKHOILOP: {
+    KHOILOPMAKHOILOP: {
       type: DataTypes.STRING(20),
+      field: "KHOILOP_MAKHOILOP",
       references: {
         model: KhoiLop,
         key: "MAKHOILOP",
       },
     },
-    MONHOC_MAMONHOC: {
+    MONHOCMAMONHOC: {
       type: DataTypes.STRING(15),
+      field: "MONHOC_MAMONHOC",
       references: {
         model: MonHoc,
         key: "MAMONHOC",

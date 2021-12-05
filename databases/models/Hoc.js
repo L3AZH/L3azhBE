@@ -7,15 +7,17 @@ class Hoc extends Model {}
 
 Hoc.init(
   {
-    SINHVIEN_MASINHVIEN: {
+    SINHVIENMASINHVIEN: {
       type: DataTypes.STRING(10),
+      field: "SINHVIEN_MASINHVIEN",
       references: {
         model: SinhVien,
         key: "MASINHVIEN",
       },
     },
-    LOPHOCPHAN_MALOPHOCPHAN: {
-      type: DataTypes.STRING(20),
+    LOPHOCPHANMALOPHOCPHAN: {
+      type: DataTypes.INTEGER,
+      field: "LOPHOCPHAN_MALOPHOCPHAN",
       references: {
         model: LopHocPhan,
         key: "MALOPHOCPHAN",

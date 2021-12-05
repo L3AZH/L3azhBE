@@ -9,7 +9,7 @@ module.exports = {
       .toUpperCase()
       .notEmpty()
       .withMessage("Vui long dien ma giang vien( key magv)")
-      .isLength({ min: 9, max: 20 })
+      .isLength({ min: 5, max: 20 })
       .withMessage("Ma giang vien khong hop le")
       .custom(async (value) => {
         const checkMaGvExist = await GiangVien.findByPk(value);

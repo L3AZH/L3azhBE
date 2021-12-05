@@ -7,7 +7,7 @@ Qc.init(
   {
     MAQC: {
       primaryKey: true,
-      type: DataTypes.STRING(7),
+      type: DataTypes.STRING(15),
       allowNull: false,
     },
     TENQC: {

@@ -20,8 +20,9 @@ Lop.init(
     SOLUONGSINHVIEN: {
       type: DataTypes.INTEGER,
     },
-    KHOILOP_MAKHOILOP: {
+    KHOILOPMAKHOILOP: {
       type: DataTypes.STRING(20),
+      field: "KHOILOP_MAKHOILOP",
       references: {
         model: KhoiLop,
         key: "MAKHOILOP",

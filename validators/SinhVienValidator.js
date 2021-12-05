@@ -1,6 +1,7 @@
 const { body, param, validationResult, query } = require("express-validator");
 const { ErrorResponse } = require("../models/ErrorResponse");
 const SinhVien = require("../databases/models/SinhVien");
+const Lop = require("../databases/models/Lop");
 
 module.exports = {
   registerSinhVienValidation: [
@@ -67,6 +68,18 @@ module.exports = {
     body("anhdaidien")
       .isArray()
       .withMessage("Du lieu anh dai dien khong hop le"),
+    body("malop")
+      .trim()
+      .notEmpty()
+      .withMessage("Vui long nhap ma lop")
+      .custom(async (value) => {
+        const findResult = await Lop.findByPk(value);
+        if (findResult == null) {
+          return Promise.reject(
+            new ErrorResponse(404, { message: "Khong tim thay ma lop nay" })
+          );
+        }
+      }),
   ],
   getInfoSinhVienValidation: [
     query("masv")

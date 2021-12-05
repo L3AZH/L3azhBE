@@ -21,6 +21,7 @@ exports.registerSinhVienAccount = asyncMiddleware(async (req, res, next) => {
     NOISINH: data.noisinh,
     EMAIL: data.email,
     MATKHAU: await hashPassword(data.matkhau),
+    LOPMALOP: data.malop,
   });
   return res.status(200).json(
     new SuccessResponse(200, {
@@ -32,6 +33,7 @@ exports.registerSinhVienAccount = asyncMiddleware(async (req, res, next) => {
         PHAI: createSvResult.PHAI,
         NOISINH: createSvResult.NOISINH,
         EMAIL: createSvResult.EMAIL,
+        MALOP: createSvResult.LOPMALOP,
       },
     })
   );

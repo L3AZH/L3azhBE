@@ -16,22 +16,25 @@ BacHe.init(
     TENBACHE: {
       type: DataTypes.STRING(45),
     },
-    QC_MAQC: {
-      type: DataTypes.STRING(7),
+    QAMAQC: {
+      type: DataTypes.STRING(15),
+      field: "QC_MAQC",
       references: {
         model: Qc,
         key: "MAQC",
       },
     },
-    BAC_MABAC: {
+    BACMABAC: {
       type: DataTypes.STRING(2),
+      field: "BAC_MABAC",
       references: {
         model: Bac,
         key: "MABAC",
       },
     },
-    HE_MAHE: {
+    HEMAHE: {
       type: DataTypes.STRING(2),
+      field: "HE_MAHE",
       references: {
         model: He,
         key: "MAHE",

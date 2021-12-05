@@ -21,14 +21,15 @@ ToKhai.init(
     NOIDEN: {
       type: DataTypes.STRING(45),
     },
-    NGAY: {
-      type: DataTypes.DATE,
+    NGAYGIO: {
+      type: DataTypes.BIGINT,
     },
     MAQR: {
       type: DataTypes.BLOB,
     },
-    SINHVIEN_MASINHVIEN: {
+    SINHVIENMASINHVIEN: {
       type: DataTypes.STRING(10),
+      field: "SINHVIEN_MASINHVIEN",
       references: {
         model: SinhVien,
         key: "MASINHVIEN",

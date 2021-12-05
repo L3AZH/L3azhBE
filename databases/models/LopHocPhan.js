@@ -9,8 +9,9 @@ LopHocPhan.init(
   {
     MALOPHOCPHAN: {
       primaryKey: true,
-      type: DataTypes.STRING(20),
+      type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true,
     },
     TOTHUCHANH: {
       type: DataTypes.INTEGER,
@@ -24,15 +25,17 @@ LopHocPhan.init(
     HOCKINAMHOC: {
       type: DataTypes.INTEGER,
     },
-    GIANGVIEN_MAGIANGVIEN: {
+    GIANGVIENMAGIANGVIEN: {
       type: DataTypes.STRING(20),
+      field: "GIANGVIEN_MAGIANGVIEN",
       references: {
         model: GiangVien,
         key: "MAGIANGVIEN",
       },
     },
-    MONHOC_MAMONHOC: {
+    MONHOCMAMONHOC: {
       type: DataTypes.STRING(15),
+      field: "MONHOC_MAMONHOC",
       references: {
         model: MonHoc,
         key: "MAMONHOC",

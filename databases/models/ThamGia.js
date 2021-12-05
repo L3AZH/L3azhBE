@@ -7,15 +7,17 @@ class ThamGia extends Model {}
 
 ThamGia.init(
   {
-    SINHVIEN_MASINHVIEN: {
+    SINHVIENMASINHVIEN: {
       type: DataTypes.STRING(10),
+      field: "SINHVIEN_MASINHVIEN",
       references: {
         model: SinhVien,
         key: "MASINHVIEN",
       },
     },
-    BUOIHOC_MABUOIHOC: {
+    BUOIHOCMABUOIHOC: {
       type: DataTypes.INTEGER,
+      field: "BUOIHOC_MABUOIHOC",
       references: {
         model: BuoiHoc,
         key: "MABUOIHOC",

@@ -19,22 +19,25 @@ KhoiLop.init(
     NAMHOCHOCKIRA: {
       type: DataTypes.INTEGER,
     },
-    NGANH_MANGANH: {
+    NGANHMANGANH: {
       type: DataTypes.STRING(20),
+      field: "NGANH_MANGANH",
       references: {
         model: Nganh,
         key: "MANGANH",
       },
     },
-    DONVI_MADONVI: {
+    DONVIMADONVI: {
       type: DataTypes.STRING(20),
+      field: "DONVI_MADONVI",
       references: {
         model: DonVi,
         key: "MADONVI",
       },
     },
-    BACHE_MABACHE: {
+    BACHEMABACHE: {
       type: DataTypes.STRING(3),
+      field: "BACHE_MABACHE",
       references: {
         model: BacHe,
         key: "MABACHE",

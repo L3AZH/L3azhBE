@@ -1,6 +1,7 @@
 const sequelize = require("../DbConnection");
 const { DataTypes, Model } = require("sequelize");
 const LopHocPhan = require("./LopHocPhan");
+const DanhSachHocKiNamHocTuan = require("./DanhSachHocKiNamHocTuan");
 
 class BuoiHoc extends Model {}
 
@@ -11,8 +12,8 @@ BuoiHoc.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    NGAY: {
-      type: DataTypes.DATE,
+    SOTHUTRONGTUAN: {
+      type: DataTypes.INTEGER,
     },
     PHONGHOC: {
       type: DataTypes.STRING(45),
@@ -26,11 +27,20 @@ BuoiHoc.init(
     LOAIBUOI: {
       type: DataTypes.STRING(30),
     },
-    LOPHOCPHAN_MALOPHOCPHAN: {
-      type: DataTypes.STRING(20),
+    LOPHOCPHANMALOPHOCPHAN: {
+      type: DataTypes.INTEGER,
+      field: "LOPHOCPHAN_MALOPHOCPHAN",
       references: {
         model: LopHocPhan,
         key: "MALOPHOCPHAN",
+      },
+    },
+    DANHSACHHOCKINAMHOCTUANHOCKINAMHOCSOTUAN: {
+      type: DataTypes.STRING(20),
+      field: "DANHSACHHOCKINAMHOCTUAN_HOCKINAMHOCSOTUAN",
+      references: {
+        model: DanhSachHocKiNamHocTuan,
+        key: "HOCKINAMHOCSOTUAN",
       },
     },
   },
@@ -45,5 +55,9 @@ BuoiHoc.init(
 LopHocPhan.hasMany(BuoiHoc);
 
 BuoiHoc.belongsTo(LopHocPhan);
+
+DanhSachHocKiNamHocTuan.hasMany(BuoiHoc);
+
+BuoiHoc.belongsTo(DanhSachHocKiNamHocTuan);
 
 module.exports = BuoiHoc;

@@ -38,8 +38,9 @@ SinhVien.init(
     ANHDAIDIEN: {
       type: DataTypes.BLOB,
     },
-    LOP_MALOP: {
+    LOPMALOP: {
       type: DataTypes.STRING(20),
+      field: "LOP_MALOP",
       references: {
         model: Lop,
         key: "MALOP",
@@ -48,6 +49,7 @@ SinhVien.init(
   },
   {
     sequelize,
+    freezeTableName: true,
     timestamps: false,
     tableName: "SINHVIEN",
     modelName: "SINHVIEN",
