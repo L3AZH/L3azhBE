@@ -32,7 +32,7 @@ Thi.init(
       type: DataTypes.INTEGER,
     },
     GIOBATDAU: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     SOPHUT: {
       type: DataTypes.INTEGER,

@@ -13,11 +13,15 @@ const SinhVienRoute = require("./routes/SinhVienRoute");
 const GiangVienRoute = require("./routes/GiangVienRoute");
 const ToKhaiRoute = require("./routes/ToKhaiRoute");
 const ChuongTrinhDaoTaoRoute = require("./routes/ChuongTrinhDaoTaoRoute");
+const LichHocRoute = require("./routes/LichHocRoute");
+const DanhSachHocKiNamHocTuanRoute = require("./routes/DanhSachHocKiNamHocTuanRoute");
 
 app.use(`${baseUrl}/auth/`, AuthRoute);
 app.use(`${baseUrl}/sinhvien/`, SinhVienRoute);
 app.use(`${baseUrl}/giangvien/`, GiangVienRoute);
 app.use(`${baseUrl}/tokhai/`, ToKhaiRoute);
 app.use(`${baseUrl}/CTDT/`, ChuongTrinhDaoTaoRoute);
+app.use(`${baseUrl}/lichhoc/`, LichHocRoute);
+app.use(`${baseUrl}/danhsachhockinamhoctuan/`, DanhSachHocKiNamHocTuanRoute);
 app.use(ErrorServerHandler);
 app.listen(port, () => console.log(`Server is running on port ${port}`));
